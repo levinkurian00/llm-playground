@@ -1,0 +1,70 @@
+:root {
+  --bg: #0a0d14;
+  --panel: #0e1320;
+  --border: #232b3d;
+  --text: #eef1fb;
+  --muted: #8b93a7;
+  --accent: #6cc4ff;
+  --ok: #4ade80;
+  --bad: #f87171;
+  --warn: #fbbf24;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font-family: "DM Sans", system-ui, sans-serif;
+  background-image: radial-gradient(#1c2438 1px, transparent 1px);
+  background-size: 27px 27px;
+}
+.app { max-width: 1100px; margin: 0 auto; padding: 32px 20px 80px; display: flex; flex-direction: column; gap: 18px; }
+header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+h1 { margin: 6px 0 0; font-size: 2.2rem; letter-spacing: -0.03em; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: 0.18em; color: var(--accent); text-transform: uppercase; }
+.panel { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+.grow { flex: 1; min-width: 0; }
+.editor { display: grid; grid-template-columns: 1fr 300px; gap: 16px; align-items: start; }
+.col { display: flex; flex-direction: column; gap: 16px; }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+label { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--muted); }
+.val { color: var(--accent); font-family: var(--mono); float: right; }
+input, select, textarea {
+  background: #0a0e18; color: var(--text); border: 1px solid var(--border); border-radius: 10px;
+  padding: 10px 12px; font: 14px var(--mono); outline: none;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+input[type="range"] { padding: 0; accent-color: var(--accent); }
+textarea { resize: vertical; }
+button { font: 500 13px var(--mono); cursor: pointer; border-radius: 10px; border: 1px solid var(--border); background: transparent; color: var(--text); padding: 10px 16px; }
+button.primary { background: var(--accent); color: #04121f; border-color: var(--accent); font-weight: 500; }
+button.primary:disabled { opacity: 0.5; cursor: wait; }
+button.ghost { color: var(--muted); }
+button.ghost:hover { color: var(--bad); border-color: var(--bad); }
+.tabs { display: flex; gap: 8px; }
+.tabs button { text-transform: capitalize; }
+.tabs button.active { border-color: var(--accent); color: var(--accent); }
+.tabs.small { margin-left: auto; }
+.tabs.small button { padding: 5px 10px; font-size: 12px; }
+.tag { font: 12px var(--mono); border: 1px solid var(--border); border-radius: 10px; padding: 4px 10px; color: var(--text); }
+.tag.muted { color: var(--muted); }
+.tag.warn { color: var(--warn); border-color: var(--warn); }
+.result-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.output { margin: 0; white-space: pre-wrap; word-break: break-word; font: 13.5px/1.6 var(--mono); color: #cfd5e6; background: #0a0e18; border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+.badge { font: 12px var(--mono); padding: 6px 10px; border-radius: 8px; width: fit-content; }
+.badge.ok { color: var(--ok); border: 1px solid var(--ok); }
+.badge.bad { color: var(--bad); border: 1px solid var(--bad); }
+.error { color: var(--bad); font: 13px var(--mono); border: 1px solid var(--bad); border-radius: 10px; padding: 10px 12px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; }
+.stat { border: 1px solid var(--border); border-radius: 10px; padding: 10px; }
+.stat .k { font-size: 11px; color: var(--muted); font-family: var(--mono); }
+.stat .v { font: 500 16px var(--mono); margin-top: 4px; }
+.row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.history { flex-direction: row; align-items: center; margin-bottom: 10px; }
+.history .grow { cursor: pointer; }
+.hist-prompt { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 4px; }
+.muted { color: var(--muted); }
+.small { font-size: 12px; font-family: var(--mono); }
+@media (max-width: 800px) {
+  .editor, .split { grid-template-columns: 1fr; }
+  h1 { font-size: 1.7rem; }
+}
